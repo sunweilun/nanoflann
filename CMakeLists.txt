@@ -7,6 +7,12 @@ cmake_minimum_required(VERSION 2.6)
 
 PROJECT(nanoflann)
 
+find_package(OpenMP)
+if (OPENMP_FOUND)
+    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+endif()
+
 # --------------------------------------------------------------
 # Indicate CMake 2.7 and above that we don't want to mix relative
 #  and absolute paths in lib lists. Run "cmake --help-policy CMP0003" for info
